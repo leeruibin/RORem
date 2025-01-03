@@ -3,8 +3,8 @@
 <a href='xxx'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a>
 
 [Ruibin Li](https://github.com/leeruibin)<sup>1,2</sup>
-| [Tao Yang](https://github.com/yangxy)<sup>1,2</sup> | 
-[Song Guo](https://scholar.google.com/citations?user=Ib-sizwAAAAJ&hl=en)<sup>1</sup> | 
+| [Tao Yang](https://github.com/yangxy)<sup>3</sup> | 
+[Song Guo](https://scholar.google.com/citations?user=Ib-sizwAAAAJ&hl=en)<sup>4</sup> | 
 [Lei Zhang](https://scholar.google.com/citations?user=wzdCc-QAAAAJ&hl=en)<sup>1,2</sup> | 
 
 <sup>1</sup>The Hong Kong Polytechnic University, <sup>2</sup>OPPO Research Institute, <sup>3</sup>ByteDance, <sup>4</sup>The Hong Kong University of Science and Technology.
