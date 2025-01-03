@@ -1,6 +1,6 @@
 # RORem: Training a Robust Object Remover with Human-in-the-Loop
 
-<a href='xxx'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a>
+<a href='https://arxiv.org/abs/2501.00740'><img src='https://img.shields.io/badge/arXiv-2501.00740-b31b1b.svg'></a>
 
 [Ruibin Li](https://github.com/leeruibin)<sup>1,2</sup>
 | [Tao Yang](https://github.com/yangxy)<sup>3</sup> | 
@@ -40,6 +40,17 @@ The following are BibTeX references: -->
 
 ### License
 This project is released under the [Apache 2.0 license](LICENSE).
+
+## BibTeX
+
+```bibtex
+@article{li2024RORem,
+  title={RORem: Training a Robust Object Remover with Human-in-the-Loop},
+  author={Ruibin Li and Tao, Yang and Song, Guo and Lei, Zhang},
+  year={2024},
+  journal={arXiv preprint arXiv:2501.00740},
+}
+```
 
 <details>
 <summary>statistics</summary>
