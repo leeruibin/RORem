@@ -15,6 +15,22 @@
 - [ ] ⬜️ RORem Model, LoRA, Discriminator
 - [ ] ⬜️ Training Code
 
+## prepare enviroment
+
+```
+git clone https://github.com/leeruibin/RORem.git
+cd RORem
+conda env create -n environment.yaml
+conda activate RORem
+```
+
+Install xformers to speedup the training, note that the xformers version should match torch version.
+
+```
+pip install xformers==0.0.28.post3
+```
+
+
 ## ⏰ Update
 The code and model will be ready soon.
 

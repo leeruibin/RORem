@@ -1,0 +1,42 @@
+name: RORem
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - pip=24.2
+  - python=3.10.14
+  - pip:
+      - accelerate==0.33.0
+      - datasets==2.19.0
+      - deepspeed==0.14.4
+      - diffusers==0.30.0
+      - einops==0.8.0
+      - gdown==4.4.0
+      - gradio==4.39.0
+      - gradio-client==1.1.1
+      - huggingface-hub==0.24.5
+      - imageio==2.35.1
+      - lpips==0.1.4
+      - ninja==1.11.1.1
+      - numpy==1.24.4
+      - opencv-python==4.9.0.80
+      - opencv-python-headless==4.9.0.80
+      - pandas==2.0.3
+      - peft==0.12.0
+      - piq==0.8.0
+      - regex==2024.7.24
+      - safetensors==0.4.3
+      - sagemaker==2.219.0
+      - sagemaker-pyspark==1.4.5
+      - scipy==1.14.1
+      - timm==1.0.11
+      - tokenizers==0.19.1
+      - torch==2.5.1
+      - torchaudio==2.5.1
+      - torchmetrics==1.4.0.post0
+      - torchvision==0.20.1
+      - transformers==4.44.0
+      - triton==3.1.0
+      - wandb==0.18.1
