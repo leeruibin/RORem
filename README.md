@@ -9,6 +9,12 @@
 
 <sup>1</sup>The Hong Kong Polytechnic University, <sup>2</sup>OPPO Research Institute, <sup>3</sup>ByteDance, <sup>4</sup>The Hong Kong University of Science and Technology.
 
+## 📌 TODO
+<!-- ✅ -->
+- [ ] ⬜️ RORem Dataset
+- [ ] ⬜️ RORem Model, LoRA, Discriminator
+- [ ] ⬜️ Training Code
+
 ## ⏰ Update
 The code and model will be ready soon.
 
