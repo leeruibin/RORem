@@ -11,9 +11,11 @@
 
 ## 📌 TODO
 <!-- ✅ -->
-- [ ] ⬜️ RORem Dataset
+- [x] ✅ RORem Dataset
+- [ ] ⬜️ Update dataset to huggingface
 - [ ] ⬜️ RORem Model, LoRA, Discriminator
 - [ ] ⬜️ Training Code
+- [ ] ⬜️ Make huggingface demo
 
 ## prepare enviroment
 
@@ -30,6 +32,16 @@ Install xformers to speedup the training, note that the xformers version should 
 pip install xformers==0.0.28.post3
 ```
 
+## Download RORem dataset
+
+| Dataset    |  Download                                                  |
+| -----------| --------------------------------------------               |
+| RORem&RORD | [Google cloud](https://drive.google.com/file/d/1sE6IOhHNCKiwFLW4a2ZWcwU4_bhvGcSA/view?usp=sharing) (73.15GB) |
+| Mulan      | [Google cloud](https://drive.google.com/file/d/1-dX5GfxyGEGBSfFeBgl5vMH9ODdCpbuq/view?usp=sharing) (3.26GB) |
+| Final HR   | [Google cloud](https://drive.google.com/file/d/1S3p_yLjPuhZbh7S15actNaAOEPvUlW5C/view?usp=sharing) (7.9GB) |
+| All        | [Google cloud](https://drive.google.com/drive/folders/1KDwQ0MF2yJ78X6Ketw4oh8jSokQYS63Q?usp=sharing) (84.31GB) |
+
+Please note that we employed the SafeStableDiffusionSafetyChecker to filter out inappropriate content, which may result in minor discrepancies between the final image-text pairs and those presented in the original paper.
 
 ## ⏰ Update
 The code and model will be ready soon.
