@@ -164,7 +164,12 @@ This project is released under the [Apache 2.0 license](LICENSE).
 }
 ```
 
+## Acknowledgements
+
+This implementation is developed based on the [diffusers](https://github.com/huggingface/diffusers/) library and utilizes the [Stable Diffusion XL-inpainting](https://huggingface.co/diffusers/stable-diffusion-xl-1.0-inpainting-0.1) model. We would like to express our gratitude to the open-source community for their valuable contributions.
+
 <details>
+
 <summary>statistics</summary>
 
 ![visitors](https://visitor-badge.laobi.icu/badge?page_id=leeruibin/RORem)
