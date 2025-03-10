@@ -43,6 +43,24 @@ pip install xformers==0.0.28.post3
 
 Please note that we employed the SafeStableDiffusionSafetyChecker to filter out inappropriate content, which may result in minor discrepancies between the final image-text pairs and those presented in the original paper.
 
+For each dataset, we build folder structure as:
+
+```
+.
+├── source
+├── mask
+├── GT
+└── meta.json #
+```
+The meta.json file record the triple as:
+```
+{"source":"source/xxx.png","mask":"mask/xxx.png","GT":"GT/xxx.png"}
+```
+
+By path the absolute path of meta.json, the training script can parse the path of each triple.
+
+
+
 ## ⏰ Update
 The code and model will be ready soon.
 
