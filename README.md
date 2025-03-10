@@ -12,12 +12,12 @@
 ## 📌 TODO
 <!-- ✅ -->
 - [x] ✅ RORem Dataset
+- [x] ✅ Training Code
 - [ ] ⬜️ Update dataset to huggingface
 - [ ] ⬜️ RORem Model, LoRA, Discriminator
-- [ ] ⬜️ Training Code
 - [ ] ⬜️ Make huggingface demo
 
-## prepare enviroment
+## 😃 prepare enviroment
 
 ```
 git clone https://github.com/leeruibin/RORem.git
@@ -32,7 +32,15 @@ Install xformers to speedup the training, note that the xformers version should 
 pip install xformers==0.0.28.post3
 ```
 
-## Download RORem dataset
+We use wandb to record the intermediate state during the training process, so make sure you finish the following process
+
+```
+pip install wandb
+wandb login
+```
+enter the WANDB_API_KEY in the shell or direct export WANDB_API_KEY=<your-api-key> to the environment variable.
+
+## ⭐ Download RORem dataset
 
 | Dataset    |  Download                                                  |
 | -----------| --------------------------------------------               |
@@ -59,7 +67,59 @@ The meta.json file record the triple as:
 
 By path the absolute path of meta.json, the training script can parse the path of each triple.
 
+## 🔥 Training
 
+### To train RORem, with the following training script
+
+```
+accelerate launch \
+    --multi_gpu \
+    --num_processes 8 \
+    train_RORem.py \
+    --train_batch_size 16 \
+    --output_dir <your_path_to_save_checkpoint> \
+    --meta_path xxx/Final_open_RORem/meta.json \
+    --max_train_steps 50000 \
+    --random_flip \
+    --resolution 512 \
+    --pretrained_model_name_or_path diffusers/stable-diffusion-xl-1.0-inpainting-0.1 \
+    --mixed_precision fp16 \
+    --checkpoints_total_limit 5 \
+    --checkpointing_steps 5000 \
+    --learning_rate 5e-5 \
+    --validation_steps 2000 \
+    --seed 4 \
+    --report_to wandb \
+```
+
+Using Deepspeed zero2 requires less GPU memory.
+
+```
+accelerate launch --config_file config/deepspeed_config.yaml \
+    --multi_gpu \
+    --num_processes 8 \
+    train_RORem.py \
+    --train_batch_size 16 \
+    --output_dir <your_path_to_save_checkpoint> \
+    --meta_path xxx/Final_open_RORem/meta.json \
+    --max_train_steps 50000 \
+    --random_flip \
+    --resolution 512 \
+    --pretrained_model_name_or_path diffusers/stable-diffusion-xl-1.0-inpainting-0.1 \
+    --mixed_precision fp16 \
+    --checkpoints_total_limit 5 \
+    --checkpointing_steps 5000 \
+    --learning_rate 5e-5 \
+    --validation_steps 2000 \
+    --seed 4 \
+    --report_to wandb \
+```
+
+OR you can directly submit the training shell as:
+
+```
+bash run_train_RORem.sh
+```
 
 ## ⏰ Update
 The code and model will be ready soon.
@@ -99,8 +159,8 @@ This project is released under the [Apache 2.0 license](LICENSE).
 @article{li2024RORem,
   title={RORem: Training a Robust Object Remover with Human-in-the-Loop},
   author={Ruibin Li and Tao, Yang and Song, Guo and Lei, Zhang},
-  year={2024},
-  journal={arXiv preprint arXiv:2501.00740},
+  year={2025},
+  booktitle={IEEE/CVF Conference on Computer Vision and Pattern Recognition},
 }
 ```
 

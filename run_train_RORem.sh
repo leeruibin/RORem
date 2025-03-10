@@ -10,6 +10,16 @@ export LAUNCHER="accelerate launch \
     --num_processes $WORLD_SIZE \
     --machine_rank $MACHINE_RANK \
     "
+
+# To use deepspeed zero2, use the following LAUNCHER
+# export LAUNCHER="accelerate launch --config_file config/deepspeed_config.yaml \
+#     --multi_gpu \
+#     --num_machines $NNODES \
+#     --num_processes $WORLD_SIZE \
+#     --machine_rank $MACHINE_RANK \
+#     "
+
+
 # if you use multiple nodes to train to model, add the following args into the LAUMCHER
 # --main_process_ip "$MASTER_ADDR" \
 # --main_process_port $MASTER_PORT \
