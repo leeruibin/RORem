@@ -9,6 +9,8 @@
 
 <sup>1</sup>The Hong Kong Polytechnic University, <sup>2</sup>OPPO Research Institute, <sup>3</sup>ByteDance, <sup>4</sup>The Hong Kong University of Science and Technology.
 
+⭐: If RORem is helpful to you, please help star this repo. Thanks! 🤗
+
 ## 📌 TODO
 <!-- ✅ -->
 - [x] ✅ RORem Dataset
@@ -121,10 +123,10 @@ OR you can directly submit the training shell as:
 bash run_train_RORem.sh
 ```
 
-## ⏰ Update
+<!-- ## ⏰ Update
 The code and model will be ready soon.
+ -->
 
-⭐: If RORem is helpful to you, please help star this repo. Thanks! 🤗
 
 ## 🌟 Overview Framework
 
