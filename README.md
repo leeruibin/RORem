@@ -123,6 +123,34 @@ OR you can directly submit the training shell as:
 bash run_train_RORem.sh
 ```
 
+### To train RORem-LCM, with the following training script
+
+```
+accelerate launch \
+    --multi_gpu \
+    --num_processes 8 \
+    --pretrained_teacher_unet xxx \
+    --output_dir experiment/RORem_LCM
+```
+OR you can directly submit the training shell as:
+```
+bash run_train_RORem_LCM.sh
+```
+
+### To train RORem-Discriminator, with the following training script
+
+In order to train RORem-Discriminator, you should add "score" to each triple which will be 
+```
+[
+{"source":"source/xxx.png","mask":"mask/xxx.png","GT":"GT/xxx.png", "score":1},
+{"source":"source/xxx.png","mask":"mask/xxx.png","GT":"GT/xxx.png", "score":0},
+]
+```
+Then you can directly submit the training shell as:
+```
+bash run_train_RORem_discriminator.sh
+```
+
 <!-- ## ⏰ Update
 The code and model will be ready soon.
  -->
@@ -168,7 +196,7 @@ This project is released under the [Apache 2.0 license](LICENSE).
 
 ## Acknowledgements
 
-This implementation is developed based on the [diffusers](https://github.com/huggingface/diffusers/) library and utilizes the [Stable Diffusion XL-inpainting](https://huggingface.co/diffusers/stable-diffusion-xl-1.0-inpainting-0.1) model. We would like to express our gratitude to the open-source community for their valuable contributions.
+This implementation is developed based on the [diffusers](https://github.com/huggingface/diffusers/) library, [LCM](https://github.com/huggingface/diffusers/blob/main/examples/consistency_distillation/train_lcm_distill_lora_sdxl_wds.py) and utilizes the [Stable Diffusion XL-inpainting](https://huggingface.co/diffusers/stable-diffusion-xl-1.0-inpainting-0.1) model. We would like to express our gratitude to the open-source community for their valuable contributions.
 
 <details>
 

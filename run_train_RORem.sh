@@ -1,10 +1,11 @@
-export WANDB_API_KEY=<your_api_key>
+#!/bin/bash
+export WANDB_API_KEY="<your_api_key>"
 
 NNODES=1
 WORLD_SIZE=8
 MACHINE_RANK=0
 
-export LAUNCHER="accelerate launch \
+LAUNCHER="accelerate launch \
     --multi_gpu \
     --num_machines $NNODES \
     --num_processes $WORLD_SIZE \
@@ -37,7 +38,7 @@ ${BASE_PATH}/Final_open_RORem/meta.json \
 # ${BASE_PATH}/yourdata2/meta.json \
 # "
 
-OUTPUT_FOLDER=<your_path_to_save_checkpoint>
+OUTPUT_FOLDER="<your_path_to_save_checkpoint>"
 
 SCRIPT_ARGS=" \
     --train_batch_size 16 \
@@ -59,5 +60,6 @@ SCRIPT_ARGS=" \
 SCRIPT=train_RORem.py
 
 export CMD="$LAUNCHER $SCRIPT $SCRIPT_ARGS" 
-bash $CMD
+echo $CMD
+$CMD
 
