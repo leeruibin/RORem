@@ -11,13 +11,16 @@
 
 ⭐: If RORem is helpful to you, please help star this repo. Thanks! 🤗
 
-## 📌 TODO
+## 📌 Progress Checklist
 <!-- ✅ -->
-- [x] ✅ RORem Dataset
-- [x] ✅ Training Code
-- [ ] ⬜️ Update dataset to huggingface
-- [ ] ⬜️ RORem Model, LoRA, Discriminator
-- [ ] ⬜️ Make huggingface demo
+
+- [x] **✅ RORem Dataset**  
+- [x] **✅ Training Code**  
+- [x] **✅ Inference Code**  
+- [ ] **⬜️ RORem Model, LoRA, Discriminator**  
+- [ ] **⬜️ Update Dataset and Model to Hugging Face**  
+- [ ] **⬜️ Create Hugging Face Demo**  
+- [ ] **⬜️ Simplify Inference Code**  
 
 ## 😃 prepare enviroment
 
