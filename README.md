@@ -93,8 +93,11 @@ python inference_RORem.py
     --use_CFG true
     --dilate_size 0 # optional: dilate the mask 
 ```
+Here, we present two versions of RORem UNet:  
+- The **[RORem](https://drive.google.com/drive/folders/1-ZOLMkifypR2SW0n4pOw6_0iIuHu2Ovy?usp=drive_link)** model, which achieves optimal performance with an image resolution of 512x512.  
+- The **[RORem-mixed](https://drive.google.com/drive/folders/1G46Rs0-fZvoJ55OLQrC35dbRohFM917z?usp=drive_link)** model, trained on a mixed resolution of 512x512 and 1024x1024, delivers superior performance when processing images larger than 512x512.  
 
-Here, we provide two version of RORem unet, the [RORem](https://drive.google.com/drive/folders/1-ZOLMkifypR2SW0n4pOw6_0iIuHu2Ovy?usp=drive_link) model can achieve best performance with image resolution of 512x512. the [RORem-mixed](https://drive.google.com/drive/folders/1G46Rs0-fZvoJ55OLQrC35dbRohFM917z?usp=drive_link) use a mixed resolution of 512x512 and 1024x1024 for training which can achieve better performance when encounter image larger than 512x512. Note that we also find by adding some content irrelevant prompt and involve CFG, we can achieve even better removal performance than the performance reported in the paper.
+Additionally, we have observed that incorporating content-irrelevant prompts and leveraging Classifier-Free Guidance (CFG) further enhances removal performance, surpassing the results reported in the original paper.
 
 ### Run RORem-4S
 To run RORem-4S inference, download the [RORem-LCM](https://drive.google.com/drive/folders/1QK8qcqT7SKRzD2AyGtgfwWwlQrUesAc1?usp=drive_link) LoRA, then run:
