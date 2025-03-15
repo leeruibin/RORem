@@ -25,13 +25,6 @@ def parse_args():
         help="Path to pretrain RORem Unet",
     )
     parser.add_argument(
-        "--RORem_LoRA",
-        type=str,
-        default=None,
-        required=True,
-        help="Path to pretrain RORem Unet",
-    )
-    parser.add_argument(
         "--image_path",
         type=str,
         default=None,

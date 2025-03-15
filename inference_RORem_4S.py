@@ -63,6 +63,12 @@ def parse_args():
         type=int,
         help="dilate the mask"
     )
+    parser.add_argument(
+        "--use_CFG",
+        type=lambda x: x.lower() == 'true',
+        default=True,
+        help="whether to enable CFG, can reduce the artifacts in the mask region in our final test"
+    )
     args = parser.parse_args()
 
     return args
@@ -105,36 +111,35 @@ def main(args):
     input_mask = load_image(args.mask_path).resize((args.resolution,args.resolution))
     if args.dilate_size != 0:
         mask_image = dilate_mask(mask_image,args.dilate_size)
-    prompts = ""
-    Removal_result = pipe_edit(
-            prompt=prompts,
-            height=height,
-            width=width,
-            image=input_image,
-            mask_image=input_mask,
-            guidance_scale=1.,
-            num_inference_steps=4,
-            strength=0.99,  # make sure to use `strength` below 1.0
-        ).images[0]
+    if not args.use_CFG:
+        prompts = ""
+        Removal_result = pipe_edit(
+                prompt=prompts,
+                height=height,
+                width=width,
+                image=input_image,
+                mask_image=input_mask,
+                guidance_scale=1.,
+                num_inference_steps=4,
+                strength=0.99,  # make sure to use `strength` below 1.0
+            ).images[0]
+    else:
+        # we also find by adding these prompt, the model can work even better
+        prompts = "4K, high quality, masterpiece, Highly detailed, Sharp focus, Professional, photorealistic, realistic"
+        negative_prompts = "low quality, worst, bad proportions, blurry, extra finger, Deformed, disfigured, unclear background"
+        Removal_result = pipe_edit(
+                prompt=prompts,
+                negative_prompt=negative_prompts,
+                height=height,
+                width=width,
+                image=input_image,
+                mask_image=input_mask,
+                guidance_scale=1.,
+                num_inference_steps=4,  # steps between 15 and 30 also work well
+                strength=0.99,  # make sure to use `strength` below 1.0
+            ).images[0]
 
     Removal_result.save(save_folder)
-    
-    # we also find by adding these prompt, the model can work even better
-    # prompts = "4K, high quality, masterpiece, Highly detailed, Sharp focus, Professional, photorealistic, realistic"
-    # negative_prompts = "low quality, worst, bad proportions, blurry, extra finger, Deformed, disfigured, unclear background"
-    # Removal_result = pipe_edit(
-    #         prompt=prompts,
-    #         negative_prompt=negative_prompts,
-    #         height=height,
-    #         width=width,
-    #         image=input_image,
-    #         mask_image=input_mask,
-    #         guidance_scale=1.,
-    #         num_inference_steps=4,  # steps between 15 and 30 also work well
-    #         strength=0.99,  # make sure to use `strength` below 1.0
-    #     ).images[0]
-
-    # Removal_result.save(save_folder)
 
 if __name__ == "__main__":
     args = parse_args()

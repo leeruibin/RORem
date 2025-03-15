@@ -71,6 +71,60 @@ The meta.json file record the triple as:
 
 By path the absolute path of meta.json, the training script can parse the path of each triple.
 
+## 🔥 Inference
+
+| Model Checkpoint    |  Download                                                  |
+| -----------| --------------------------------------------               |
+| RORem | [Google cloud](https://drive.google.com/drive/folders/1-ZOLMkifypR2SW0n4pOw6_0iIuHu2Ovy?usp=drive_link) |
+| RORem-mixed | [Google cloud](https://drive.google.com/drive/folders/1G46Rs0-fZvoJ55OLQrC35dbRohFM917z?usp=drive_link) |
+| RORem-LCM      | [Google cloud](https://drive.google.com/drive/folders/1QK8qcqT7SKRzD2AyGtgfwWwlQrUesAc1?usp=drive_link)|
+| RORem-Discriminator      | [Google cloud](https://drive.google.com/drive/folders/1ka3tN_hEeP1QR2CU81Uf9QM1JBHdDvc2?usp=drive_link)|
+
+### Run RORem
+To run RORem inference, prepare an input image and a mask image, then run:
+
+```
+python inference_RORem.py
+    --pretrained_model diffusers/stable-diffusion-xl-1.0-inpainting-0.1
+    --RORem_unet xxx # RORem unet checkpoint
+    --image_path xxx.png
+    --mask_path xxx_mask.png
+    --save_path result/output.png
+    --use_CFG true
+    --dilate_size 0 # optional: dilate the mask 
+```
+
+Here, we provide two version of RORem unet, the [RORem](https://drive.google.com/drive/folders/1-ZOLMkifypR2SW0n4pOw6_0iIuHu2Ovy?usp=drive_link) model can achieve best performance with image resolution of 512x512. the [RORem-mixed](https://drive.google.com/drive/folders/1G46Rs0-fZvoJ55OLQrC35dbRohFM917z?usp=drive_link) use a mixed resolution of 512x512 and 1024x1024 for training which can achieve better performance when encounter image larger than 512x512. Note that we also find by adding some content irrelevant prompt and involve CFG, we can achieve even better removal performance than the performance reported in the paper.
+
+### Run RORem-4S
+To run RORem-4S inference, download the [RORem-LCM](https://drive.google.com/drive/folders/1QK8qcqT7SKRzD2AyGtgfwWwlQrUesAc1?usp=drive_link) LoRA, then run:
+
+```
+python inference_RORem_4S.py
+    --pretrained_model diffusers/stable-diffusion-xl-1.0-inpainting-0.1
+    --RORem_unet xxx # RORem unet checkpoint
+    --RORem_LoRA xxx # RORem LoRA checkpoint
+    --image_path xxx.png
+    --mask_path xxx_mask.png
+    --inference_steps 4
+    --save_path result/output.png
+    --use_CFG true
+    --dilate_size 0 # optional: dilate the mask 
+```
+
+### Run RORem-discriminator
+
+To run RORem-discrminator, download the [RORem-Discriminator](https://drive.google.com/drive/folders/1ka3tN_hEeP1QR2CU81Uf9QM1JBHdDvc2?usp=drive_link), then run:
+
+```
+python inference_RORem_discrminator.py
+    --pretrained_model diffusers/stable-diffusion-xl-1.0-inpainting-0.1
+    --RORem_discriminator xxx
+    --image_path xxx.png
+    --mask_path xxx_mask.png
+    --edited_path xxx.png
+```
+
 ## 🔥 Training
 
 ### To train RORem, with the following training script
