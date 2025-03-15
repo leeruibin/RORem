@@ -17,7 +17,7 @@
 - [x] **✅ RORem Dataset**  
 - [x] **✅ Training Code**  
 - [x] **✅ Inference Code**  
-- [ ] **⬜️ RORem Model, LoRA, Discriminator**  
+- [x] **✅ RORem Model, LoRA, Discriminator**  
 - [ ] **⬜️ Update Dataset and Model to Hugging Face**  
 - [ ] **⬜️ Create Hugging Face Demo**  
 - [ ] **⬜️ Simplify Inference Code**  
