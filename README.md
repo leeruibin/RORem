@@ -100,7 +100,7 @@ Here, we present two versions of RORem UNet:
 Additionally, we have observed that incorporating content-irrelevant prompts and leveraging Classifier-Free Guidance (CFG) further enhances removal performance, surpassing the results reported in the original paper.
 
 ### Run RORem-4S
-To run RORem-4S inference, download the [RORem-LCM](https://drive.google.com/drive/folders/1QK8qcqT7SKRzD2AyGtgfwWwlQrUesAc1?usp=drive_link) LoRA, then run:
+To run RORem-4S inference, download the **[RORem-LCM](https://drive.google.com/drive/folders/1QK8qcqT7SKRzD2AyGtgfwWwlQrUesAc1?usp=drive_link) LoRA, then run:
 
 ```
 python inference_RORem_4S.py
@@ -117,7 +117,7 @@ python inference_RORem_4S.py
 
 ### Run RORem-discriminator
 
-To run RORem-discrminator, download the [RORem-Discriminator](https://drive.google.com/drive/folders/1ka3tN_hEeP1QR2CU81Uf9QM1JBHdDvc2?usp=drive_link), then run:
+To run RORem-discrminator, download the **[RORem-Discriminator](https://drive.google.com/drive/folders/1ka3tN_hEeP1QR2CU81Uf9QM1JBHdDvc2?usp=drive_link), then run:
 
 ```
 python inference_RORem_discrminator.py
