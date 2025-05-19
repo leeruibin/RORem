@@ -18,7 +18,8 @@
 - [x] **✅ Training Code**  
 - [x] **✅ Inference Code**  
 - [x] **✅ RORem Model, LoRA, Discriminator**  
-- [ ] **⬜️ Update Dataset and Model to Hugging Face**  
+- [x] **✅ RORem Diffuser**  
+- [ ] **⬜️ Update Dataset to Hugging Face**  
 - [ ] **⬜️ Create Hugging Face Demo**  
 - [ ] **⬜️ Simplify Inference Code**  
 
@@ -79,6 +80,56 @@ By path the absolute path of meta.json, the training script can parse the path o
 | RORem-mixed | [Google cloud](https://drive.google.com/drive/folders/1G46Rs0-fZvoJ55OLQrC35dbRohFM917z?usp=drive_link) |
 | RORem-LCM      | [Google cloud](https://drive.google.com/drive/folders/1QK8qcqT7SKRzD2AyGtgfwWwlQrUesAc1?usp=drive_link)|
 | RORem-Discriminator      | [Google cloud](https://drive.google.com/drive/folders/1ka3tN_hEeP1QR2CU81Uf9QM1JBHdDvc2?usp=drive_link)|
+
+### RORem Diffuser
+
+```
+from diffusers import AutoPipelineForInpainting
+from myutils.img_util import dilate_mask
+
+resolution = 512
+dilate_size = 20
+use_CFG = True
+pipe_edit = AutoPipelineForInpainting.from_pretrained(
+        "LetsThink/RORem",
+        torch_dtype=torch.float16, 
+        variant="fp16"
+    )
+input_image = load_image(input_path).resize((resolution,resolution))
+input_mask = load_image(mask_path).resize((resolution,resolution))
+if args.dilate_size != 0:
+    mask_image = dilate_mask(mask_image,dilate_size)
+height = width = resolution
+if not args.use_CFG:
+    prompts = ""
+    Removal_result = pipe_edit(
+            prompt=prompts,
+            height=height,
+            width=width,
+            image=input_image,
+            mask_image=input_mask,
+            guidance_scale=1.,
+            num_inference_steps=50,  # steps between 15 and 30 also work well
+            strength=0.99,  # make sure to use `strength` below 1.0
+        ).images[0]
+else:
+    # we also find by adding these prompt, the model can work even better
+    prompts = "4K, high quality, masterpiece, Highly detailed, Sharp focus, Professional, photorealistic, realistic"
+    negative_prompts = "low quality, worst, bad proportions, blurry, extra finger, Deformed, disfigured, unclear background"
+    Removal_result = pipe_edit(
+            prompt=prompts,
+            negative_prompt=negative_prompts,
+            height=height,
+            width=width,
+            image=input_image,
+            mask_image=input_mask,
+            guidance_scale=1.,
+            num_inference_steps=50,  # steps between 15 and 30 also work well
+            strength=0.99,  # make sure to use `strength` below 1.0
+        ).images[0]
+
+
+```
 
 ### Run RORem
 To run RORem inference, prepare an input image and a mask image, then run:
@@ -186,6 +237,7 @@ bash run_train_RORem.sh
 
 ```
 accelerate launch \
+    train_RORem_lcm.py \
     --multi_gpu \
     --num_processes 8 \
     --pretrained_teacher_unet xxx \
