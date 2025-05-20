@@ -88,7 +88,7 @@ def main(args):
 
     # Step 2: load RORem Unet
     unet = UNet2DConditionModel.from_pretrained(args.RORem_unet).to("cuda",dtype=torch.float16)
-    print(f"Finish loading unet from {args.pretrained_unet}!!")
+    print(f"Finish loading unet from {args.RORem_unet}!!")
     pipe_edit.unet = unet
 
     # Step 3: load LoRA

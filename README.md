@@ -19,7 +19,7 @@
 - [x] **✅ Inference Code**  
 - [x] **✅ RORem Model, LoRA, Discriminator**  
 - [x] **✅ RORem Diffuser**  
-- [ ] **⬜️ Update Dataset to Hugging Face**  
+- [x] **✅ Update Dataset to Hugging Face**  
 - [ ] **⬜️ Create Hugging Face Demo**  
 - [ ] **⬜️ Simplify Inference Code**  
 
@@ -45,6 +45,10 @@ pip install wandb
 wandb login
 ```
 enter the WANDB_API_KEY in the shell or direct export WANDB_API_KEY=<your-api-key> to the environment variable.
+
+## ⭐ Download RORem dataset from huggingface
+
+The RORem dataset are now available at [LetsThink/RORem_dataset](https://huggingface.co/datasets/LetsThink/RORem_dataset).
 
 ## ⭐ Download RORem dataset
 
